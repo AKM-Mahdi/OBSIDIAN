@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OBSIDIAN — Heavyweight essentials in black</title>
+<meta name="description" content="OBSIDIAN: heavyweight black streetwear essentials — hoodies, knits, shirts and outerwear.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&amp;family=Inter+Tight:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#000000}
+a{color:inherit}a:hover{opacity:.8}
+.ph{position:relative;overflow:hidden}
+.phLabel{position:absolute;left:14px;bottom:14px;font:600 10px/1.3 'Inter Tight',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+:root{--accent:#D7FF3A}
+/* mobile menu */
+.mMenu{position:fixed;inset:0;z-index:50;background:#000;font-family:'Inter Tight',sans-serif;color:#fff;display:flex;flex-direction:column;padding:24px 24px 40px;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s}
+.mMenu.open{opacity:1;visibility:visible}
+.mMenu nav{display:flex;flex-direction:column;gap:6px;margin-top:40px}
+.mMenu nav a{font-family:'Special Gothic Condensed One',sans-serif;font-size:44px;line-height:1.1;text-transform:uppercase;color:#fff;text-decoration:none;transform:translateY(16px);opacity:0;transition:transform .5s ease,opacity .5s ease}
+.mMenu.open nav a{transform:none;opacity:1}
+.mMenu nav a:nth-child(2){transition-delay:.05s}.mMenu nav a:nth-child(3){transition-delay:.1s}.mMenu nav a:nth-child(4){transition-delay:.15s}.mMenu nav a:nth-child(5){transition-delay:.2s}.mMenu nav a:nth-child(6){transition-delay:.25s}
+.mMenu .mTop{display:flex;justify-content:space-between;align-items:center;font-family:'Special Gothic Condensed One',sans-serif;font-size:24px;letter-spacing:.2em}
+.mMenu .mClose{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;font-size:22px;cursor:pointer}
+.mMenu .mFoot{margin-top:auto;font-size:13px;color:rgba(255,255,255,.6)}
+body.noScroll{overflow:hidden}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+img{display:block}
+a,button{transition:opacity .25s ease, transform .25s ease, background-color .25s ease, color .25s ease}
+button:hover{transform:translateY(-1px)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* hero slides */
+.heroSlide{opacity:0;transform:scale(1.06);transition:opacity 1.1s ease, transform 6s ease}
+.heroSlide.is-on{opacity:1;transform:scale(1)}
+#heroTitle,#heroText,#heroEyebrow{transition:opacity .45s ease, transform .45s ease}
+.heroSwap #heroTitle,.heroSwap #heroText,.heroSwap #heroEyebrow{opacity:0;transform:translateY(14px)}
+.ringFill{transition:none}
+.ringFill.run{transition:stroke-dashoffset linear}
+
+/* image hover zoom */
+.ph img{transition:transform .8s cubic-bezier(.2,.7,.2,1), opacity .4s ease}
+a:hover .ph img,a.ph:hover img,article:hover .ph img{transform:scale(1.06)}
+#hero .ph img, #hero img{transform:none}
+
+/* press marquee */
+.marquee{flex:1;min-width:0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marqueeTrack{display:flex;align-items:center;gap:64px;width:max-content;animation:marquee 28s linear infinite}
+.marquee:hover .marqueeTrack{animation-play-state:paused}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* lookbook */
+.lookFrame{transition:transform .5s cubic-bezier(.2,.7,.2,1), opacity .35s ease, box-shadow .4s ease}
+.lookFrame:hover{box-shadow:0 34px 70px rgba(0,0,0,.75)}
+.lookFrame.swap{opacity:0}
+#lookText{transition:opacity .35s ease}
+
+/* feature slider */
+#featImg,#featTitle,#featText{transition:opacity .4s ease, transform .4s ease}
+#feature.swap #featImg{opacity:0;transform:scale(1.03)}
+#feature.swap #featTitle,#feature.swap #featText{opacity:0;transform:translateY(12px)}
+#featDots button{transition:width .35s ease, background-color .35s ease}
+
+/* testimonials track */
+.tTrack{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.tTrack::-webkit-scrollbar{display:none}
+.tTrack>article{scroll-snap-align:start}
+
+/* scroll reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+}
+
+/* mobile */
+@media (max-width: 900px){
+  section,footer,header,body>div>div{padding-left:20px!important;padding-right:20px!important}
+  #hero{height:600px!important}
+  #hero>div,#hero header{padding-left:20px!important;padding-right:20px!important}
+  #hero>div:has(> [aria-label="Previous slide"]){display:none!important}
+  [style*="min-height: 44px"]>*:first-child,[style*="min-height: 44px"]>*:last-child{display:none!important}
+  [style*="min-height: 44px"]{justify-content:center!important;padding:8px 0}
+  #hero [role="tablist"]{width:100%;justify-content:flex-start}
+  #hero header>div{gap:12px!important}
+  #hero header>div>div{gap:12px!important}
+  a[aria-label="OBSIDIAN home"]{font-size:22px!important;letter-spacing:.12em!important}
+  a[aria-label="Account"]{display:none!important}
+  section[style*="border-top: 1px solid #1A1A1A; border-bottom"] span[style*="As featured"],section[style*="border-bottom: 1px solid #1A1A1A; padding: 0 50px"]>div>span{display:none}
+  #heroTitle{font-size:52px!important}
+  nav[aria-label="Main"] a,header a[href="#"]:not([aria-label]){display:none}
+  #feature>div{padding:0 20px!important}
+  #feature span[style*="position: absolute"]{display:none}
+  #featTitle{font-size:60px!important}
+  .tTrack>article{width:88vw!important;height:auto!important;flex-direction:column}
+  .tTrack>article>div:first-child{width:100%!important;height:260px}
+  section [style*="flex: 0 0 340px"]{flex-basis:100%!important}
+  section [style*="gap: 60px"]{flex-wrap:wrap}
+  [style*="max-width: 1100px; display: flex; align-items: center; justify-content: space-between; gap: 24px"]{gap:4px!important}
+  .lookFrame{width:25vw!important;height:34vw!important;padding:6px 6px 30px!important}
+  [aria-label="Previous look"],[aria-label="Next look"]{width:36px!important;height:36px!important;flex:none}
+  #feature [style*="flex: 1.1 1 460px"],#feature [style*="flex: 1 1 400px"]{flex-basis:100%!important}
+  #feature [style*="width: 420px"]{width:100%!important;max-width:340px}
+  section h2[style*="font-size: 48px"]{font-size:34px!important;overflow-wrap:anywhere}
+  .lookFrame span[style*="bottom: 16px"]{font-size:12px!important;bottom:8px!important}
+  .lookFrame span[style*="bottom: 16px"]>span{display:none}
+  [style*="display: flex; gap: 30px; flex-wrap: wrap"]{gap:14px!important}
+  article[style*="min-width: 260px"]{min-width:0!important;flex:1 1 calc(50% - 7px)!important}
+  article[style*="min-width: 260px"] span[style*="min-width: 34px"]{min-width:26px!important;height:24px!important}
+  [style*="flex: 1 1 180px"]{flex:1 1 50%!important}
+  footer div[style*="font-size: 300px"]{font-size:28vw!important}
+  h2[style*="font-size: 56px"]{font-size:40px!important}
+}
+</style>
+</head>
+<body>
+<div style="width: 100%; background: #000000; color: #FFFFFF; font-family: 'Inter Tight', sans-serif; font-size: 15px; line-height: 1.5">
+
+<!-- ANNOUNCEMENT BAR -->
+<div style="border-bottom: 1px solid #1A1A1A; padding: 0 50px">
+  <div style="min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13px; font-weight: 500">
+    <span style="flex: 1 1 200px; font-size: 11px; font-weight: 600; letter-spacing: .16em; color: rgba(255,255,255,.6)">FW26 · LIMITED RUN</span>
+    <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center">
+      <span>Free shipping on orders over $150. <a href="#" style="text-decoration: underline">Shop Now</a></span>
+      <span id="countdown" style="display: flex; gap: 4px" aria-label="Time left in the drop"><span style="min-width: 30px; height: 24px; border-radius: 4px; background: #1F1F1F; display: inline-flex; align-items: center; justify-content: center; font-weight: 600">02</span><span style="min-width: 30px; height: 24px; border-radius: 4px; background: #1F1F1F; display: inline-flex; align-items: center; justify-content: center; font-weight: 600">02</span><span style="min-width: 30px; height: 24px; border-radius: 4px; background: #1F1F1F; display: inline-flex; align-items: center; justify-content: center; font-weight: 600">59</span><span style="min-width: 30px; height: 24px; border-radius: 4px; background: #1F1F1F; display: inline-flex; align-items: center; justify-content: center; font-weight: 600">22</span></span>
+    </div>
+    <div style="flex: 1 1 200px; display: flex; justify-content: flex-end; align-items: center; gap: 12px">
+      <a href="#" style="text-decoration: none">United States (USD $)</a>
+      <span style="width: 1px; height: 12px; background: rgba(255,255,255,.3)"></span>
+      <a href="#" style="text-decoration: none">English</a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO (with overlaid header) -->
+<section id="hero" class="ph" style="height: 660px; background: radial-gradient(ellipse at 68% 40%, #2A2A2A 0%, #111111 45%, #000000 100%); display: flex; flex-direction: column; justify-content: space-between">
+  <img class="heroSlide is-on" src="assets/hero.jpg" alt="Model in a black sweatshirt and cap at night" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% center">
+  <img class="heroSlide" src="assets/hero2.jpg" alt="Model in black lace-up boots on stone steps" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 65% center">
+  <img class="heroSlide" src="assets/hero3.jpg" alt="Model in a black sweatshirt by a graffiti shutter" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center">
+  <span style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 55%, rgba(0,0,0,.6) 100%)"></span>
+  <header style="position: relative; padding: 0 50px">
+    <div style="height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
+      <nav aria-label="Main" style="flex: 1 1 0; display: flex; align-items: center; gap: 22px; font-size: 14px; font-weight: 500">
+        <button aria-label="Open menu" style="width: 24px; height: 24px; padding: 0; border: 0; background: transparent; color: #FFFFFF; cursor: pointer; display: inline-flex; align-items: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg></button>
+        <a href="#" style="text-decoration: none">Men</a>
+        <a href="#" style="text-decoration: none">Women</a>
+        <a href="#" style="text-decoration: none">Collections</a>
+      </nav>
+      <a href="#" aria-label="OBSIDIAN home" style="text-decoration: none; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 34px; letter-spacing: .22em; line-height: 1">OBSIDIAN</a>
+      <div style="flex: 1 1 0; display: flex; align-items: center; justify-content: flex-end; gap: 20px; font-size: 14px; font-weight: 500">
+        <a href="#" style="text-decoration: none">Lookbook</a>
+        <a href="#" style="text-decoration: none">Stores</a>
+        <a href="#" aria-label="Search" style="display: inline-flex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg></a>
+        <a href="#" aria-label="Account" style="display: inline-flex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg></a>
+        <a href="#" aria-label="Cart, 0 items" style="position: relative; display: inline-flex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 13H6z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg><span style="position: absolute; top: -5px; right: -7px; min-width: 15px; height: 15px; border-radius: 999px; background: var(--accent); color: #000000; font-size: 10px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">0</span></a>
+      </div>
+    </div>
+  </header>
+  <div style="position: relative; padding: 0 50px; display: flex; justify-content: space-between"><button aria-label="Previous slide" style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.04); color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button><button aria-label="Next slide" style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.04); color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></div>
+  <div style="position: relative; padding: 0 50px 40px; display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap">
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <span style="font-size: 12px; font-weight: 600; letter-spacing: .2em; color: rgba(255,255,255,.75)" id="heroEyebrow">FALL / WINTER 2026</span>
+      <h1 id="heroTitle" style="margin: 0; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 76px; font-weight: 400; line-height: .95; text-transform: uppercase">Wear the Night</h1>
+      <p id="heroText" style="margin: 0 0 18px; font-size: 18px; color: rgba(255,255,255,.85)">Heavyweight essentials, cut in black</p>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap">
+        <a href="#" style="height: 52px; padding: 0 22px 0 24px; border-radius: 999px; background: #FFFFFF; color: #000000; text-decoration: none; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 18px">Shop Men<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></a>
+        <a href="#" style="height: 52px; padding: 0 22px 0 24px; border-radius: 999px; background: #FFFFFF; color: #000000; text-decoration: none; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 18px">Shop Women<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></a>
+      </div>
+    </div>
+    <div role="tablist" aria-label="Hero slides" style="display: flex; align-items: center; gap: 16px; font-size: 17px; font-weight: 500">
+      <button class="heroTab" role="tab" aria-selected="true" style="border: 0; background: transparent; color: #FFFFFF; font: inherit; font-weight: 700; padding: 0; display: inline-flex; align-items: center; gap: 10px; cursor: pointer"><svg id="heroRing" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="rgba(255,255,255,.3)" stroke-width="2"></circle><circle class="ringFill" cx="12" cy="12" r="9" stroke="var(--accent)" stroke-dasharray="56.55" stroke-dashoffset="56.55" transform="rotate(-90 12 12)"></circle><path style="display:none" d="M12 3a9 9 0 0 1 0 18" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round"></path></svg>Outerwear</button>
+      <button class="heroTab" role="tab" aria-selected="false" style="border: 0; background: transparent; color: rgba(255,255,255,.55); font: inherit; padding: 0; cursor: pointer">Hoodies</button>
+      <button class="heroTab" role="tab" aria-selected="false" style="border: 0; background: transparent; color: rgba(255,255,255,.55); font: inherit; padding: 0; cursor: pointer">Denim</button>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS STRIP -->
+<section style="border-top: 1px solid #1A1A1A; border-bottom: 1px solid #1A1A1A; padding: 0 50px">
+  <div style="min-height: 100px; display: flex; align-items: center; gap: 48px; overflow: hidden">
+    <span style="flex: none; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 20px; letter-spacing: .06em; text-transform: uppercase">As featured in:</span>
+    <div class="marquee"><div class="marqueeTrack"><span style="color: rgba(255,255,255,.7); display: inline-flex; align-items: center; gap: 8px; flex: none; font-family: Georgia, serif; font-size: 24px; font-style: normal; letter-spacing: .02em">The Edit</span><span style="color: rgba(255,255,255,.7); display: inline-flex; align-items: center; gap: 8px; flex: none; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 28px; letter-spacing: .12em">HYPEFORM</span><span style="color: rgba(255,255,255,.7); display: inline-flex; align-items: center; gap: 8px; flex: none; font-size: 20px; font-weight: 700; letter-spacing: -0.02em">StreetLedger</span><span style="color: rgba(255,255,255,.7); display: inline-flex; align-items: center; gap: 8px; flex: none; font-size: 18px; font-weight: 500; letter-spacing: .3em">MONO/MAG</span><span style="color: rgba(255,255,255,.7); display: inline-flex; align-items: center; gap: 8px; flex: none; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 26px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l9 9-9 9-9-9z"></path></svg>KULT</span><span style="color: rgba(255,255,255,.7); display: inline-flex; align-items: center; gap: 8px; flex: none; font-size: 19px; font-weight: 600">Northwall</span><span aria-hidden="true" style="color: rgba(255,255,255,.7); display: inline-flex; align-items: center; gap: 8px; flex: none; font-family: Georgia, serif; font-size: 24px; font-style: normal; letter-spacing: .02em">The Edit</span><span aria-hidden="true" style="color: rgba(255,255,255,.7); display: inline-flex; align-items: center; gap: 8px; flex: none; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 28px; letter-spacing: .12em">HYPEFORM</span><span aria-hidden="true" style="color: rgba(255,255,255,.7); display: inline-flex; align-items: center; gap: 8px; flex: none; font-size: 20px; font-weight: 700; letter-spacing: -0.02em">StreetLedger</span><span aria-hidden="true" style="color: rgba(255,255,255,.7); display: inline-flex; align-items: center; gap: 8px; flex: none; font-size: 18px; font-weight: 500; letter-spacing: .3em">MONO/MAG</span><span aria-hidden="true" style="color: rgba(255,255,255,.7); display: inline-flex; align-items: center; gap: 8px; flex: none; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 26px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l9 9-9 9-9-9z"></path></svg>KULT</span><span aria-hidden="true" style="color: rgba(255,255,255,.7); display: inline-flex; align-items: center; gap: 8px; flex: none; font-size: 19px; font-weight: 600">Northwall</span></div></div>
+  </div>
+</section>
+
+<!-- NEW ARRIVALS -->
+<section style="padding: 88px 50px">
+  <div style="display: flex; flex-direction: column; gap: 32px">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+      <div style="display: flex; flex-direction: column; gap: 12px"><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: .16em; color: var(--accent)"><span style="width: 10px; height: 10px; background: var(--accent)"></span>FW26</span><h2 style="margin: 0; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 48px; font-weight: 400; line-height: .95; text-transform: uppercase; color: #FFFFFF">New Arrivals</h2></div>
+      <a href="#" style="font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #FFFFFF; text-underline-offset: 5px">View all</a>
+    </div>
+    <div style="display: flex; gap: 30px; flex-wrap: wrap">
+      <article data-rv style="flex: 1 1 0; min-width: 260px; display: flex; flex-direction: column; gap: 14px">
+        <a href="#" style="position: relative; display: block; aspect-ratio: 4 / 5; background: #111111; text-decoration: none">
+          <span class="ph" style="display: block; position: absolute; inset: 0; background: linear-gradient(165deg, #1C1C1C 0%, #0E0E0E 100%)"><img src="assets/np1.jpg" alt="Model in a black heavyweight hoodie, studio" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%"></span>
+          <span style="position: absolute; top: 12px; left: 12px; display: flex; flex-direction: column; gap: 8px"><span style="background: var(--accent); color: #000000; border: 1px solid var(--accent); font-size: 11px; font-weight: 600; padding: 4px 10px">JUST DROPPED</span></span>
+        </a>
+        <a href="#" style="font-size: 15px; font-weight: 500; letter-spacing: .02em; text-transform: uppercase; text-decoration: none">Boxy Heavyweight Hoodie</a>
+        <span style="font-size: 20px; color: #FFFFFF">$128<sup style="font-size: 10px">.00</sup></span>
+        <span style="display: flex; gap: 6px"><span style="min-width: 34px; height: 28px; border: 1px solid #2A2A2A; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,.8)">S</span><span style="min-width: 34px; height: 28px; border: 1px solid #2A2A2A; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,.8)">M</span><span style="min-width: 34px; height: 28px; border: 1px solid #2A2A2A; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,.8)">L</span><span style="min-width: 34px; height: 28px; border: 1px solid #2A2A2A; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,.8)">XL</span></span>
+      </article>
+      <article data-rv style="flex: 1 1 0; min-width: 260px; display: flex; flex-direction: column; gap: 14px">
+        <a href="#" style="position: relative; display: block; aspect-ratio: 4 / 5; background: #111111; text-decoration: none">
+          <span class="ph" style="display: block; position: absolute; inset: 0; background: linear-gradient(165deg, #1C1C1C 0%, #0E0E0E 100%)"><img src="assets/np2.jpg" alt="Model in a black mock-neck knit, studio" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%"></span>
+          <span style="position: absolute; top: 12px; left: 12px; display: flex; flex-direction: column; gap: 8px"><span style="background: #FFFFFF; color: #000000; border: 1px solid #FFFFFF; font-size: 11px; font-weight: 600; padding: 4px 10px">SELLING FAST</span><span style="align-self: flex-start; background: #E5402E; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 4px 10px">−20%</span></span><span style="position: absolute; left: 14px; right: 14px; bottom: 14px; height: 40px; background: #E5402E; color: #FFFFFF; font-size: 13px; font-weight: 700; letter-spacing: .2em; display: flex; align-items: center; justify-content: center">6D&nbsp;&nbsp;09:02:50</span>
+        </a>
+        <a href="#" style="font-size: 15px; font-weight: 500; letter-spacing: .02em; text-transform: uppercase; text-decoration: none">Mock-Neck Knit</a>
+        <span style="display: flex; align-items: baseline; gap: 12px"><s style="font-size: 15px; color: #777777"><span style="font-size: 15px; color: #777777">$148<sup style="font-size: 9px">.00</sup></span></s><span style="font-size: 20px; color: #E5402E">$118<sup style="font-size: 10px">.00</sup></span></span>
+        <span style="display: flex; gap: 6px"><span style="min-width: 34px; height: 28px; border: 1px solid #2A2A2A; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,.8)">S</span><span style="min-width: 34px; height: 28px; border: 1px solid #2A2A2A; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,.8)">M</span><span style="min-width: 34px; height: 28px; border: 1px solid #2A2A2A; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,.8)">L</span><span style="min-width: 34px; height: 28px; border: 1px solid #2A2A2A; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,.8)">XL</span></span>
+      </article>
+      <article data-rv style="flex: 1 1 0; min-width: 260px; display: flex; flex-direction: column; gap: 14px">
+        <a href="#" style="position: relative; display: block; aspect-ratio: 4 / 5; background: #111111; text-decoration: none">
+          <span class="ph" style="display: block; position: absolute; inset: 0; background: linear-gradient(165deg, #1C1C1C 0%, #0E0E0E 100%)"><img src="assets/np3.jpg" alt="Model in a washed zip hoodie, studio" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%"></span>
+          <span style="position: absolute; top: 12px; left: 12px; display: flex; flex-direction: column; gap: 8px"><span style="background: transparent; color: #FFFFFF; border: 1px solid #FFFFFF; font-size: 11px; font-weight: 600; padding: 4px 10px">LOW STOCK</span></span>
+        </a>
+        <a href="#" style="font-size: 15px; font-weight: 500; letter-spacing: .02em; text-transform: uppercase; text-decoration: none">Washed Zip Hoodie</a>
+        <span style="font-size: 20px; color: #FFFFFF">$138<sup style="font-size: 10px">.00</sup></span>
+        <span style="display: flex; gap: 6px"><span style="min-width: 34px; height: 28px; border: 1px solid #2A2A2A; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,.8)">S</span><span style="min-width: 34px; height: 28px; border: 1px solid #2A2A2A; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,.8)">M</span><span style="min-width: 34px; height: 28px; border: 1px solid #2A2A2A; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,.8)">L</span><span style="min-width: 34px; height: 28px; border: 1px solid #2A2A2A; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,.8)">XL</span></span>
+      </article>
+      <article data-rv style="flex: 1 1 0; min-width: 260px; display: flex; flex-direction: column; gap: 14px">
+        <a href="#" style="position: relative; display: block; aspect-ratio: 4 / 5; background: #111111; text-decoration: none">
+          <span class="ph" style="display: block; position: absolute; inset: 0; background: linear-gradient(165deg, #1C1C1C 0%, #0E0E0E 100%)"><img src="assets/np4.jpg" alt="Model in a black hooded jacket and cap" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%"></span>
+          <span style="position: absolute; top: 12px; left: 12px; display: flex; flex-direction: column; gap: 8px"><span style="background: #FFFFFF; color: #000000; border: 1px solid #FFFFFF; font-size: 11px; font-weight: 600; padding: 4px 10px">BEST SELLER</span></span>
+        </a>
+        <a href="#" style="font-size: 15px; font-weight: 500; letter-spacing: .02em; text-transform: uppercase; text-decoration: none">Hooded Shell Jacket</a>
+        <span style="font-size: 20px; color: #FFFFFF">$248<sup style="font-size: 10px">.00</sup></span>
+        <span style="display: flex; gap: 6px"><span style="min-width: 34px; height: 28px; border: 1px solid #2A2A2A; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,.8)">S</span><span style="min-width: 34px; height: 28px; border: 1px solid #2A2A2A; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,.8)">M</span><span style="min-width: 34px; height: 28px; border: 1px solid #2A2A2A; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,.8)">L</span><span style="min-width: 34px; height: 28px; border: 1px solid #2A2A2A; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,.8)">XL</span></span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- JUST DROPPED -->
+<section style="padding: 88px 50px; background: #0B0B0B; border-top: 1px solid #1A1A1A; border-bottom: 1px solid #1A1A1A">
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 40px">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 12px"><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: .16em; color: var(--accent)"><span style="width: 10px; height: 10px; background: var(--accent)"></span>THE LOOKBOOK</span><h2 style="margin: 0; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 48px; font-weight: 400; line-height: .95; text-transform: uppercase; color: #FFFFFF">Just Dropped</h2></div>
+    <div style="width: 100%; max-width: 1100px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
+      <button aria-label="Previous look" style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.04); color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button>
+      <div style="flex: 1; display: flex; align-items: center; justify-content: center">
+        <a href="#" class="lookFrame" style="position: relative; flex: none; width: 250px; height: 330px; box-sizing: border-box; padding: 12px 12px 52px; background: #F2F2EE; box-shadow: 0 24px 50px rgba(0,0,0,.6); text-decoration: none; display: block; margin-right: -18px; transform: rotate(7deg)"><span class="ph" style="display: block; width: 100%; height: 100%; background: linear-gradient(160deg, #2A2A2A 0%, #0E0E0E 100%)"><img src="assets/lb1.jpg" alt="Model in black on stone steps" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center"></span><span style="position: absolute; left: 14px; right: 14px; bottom: 16px; display: flex; align-items: center; justify-content: space-between; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 20px; line-height: 1; text-transform: uppercase; color: #000000">Look 02<span style="font-family: 'Inter Tight', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .1em">FW26</span></span></a>
+        <a href="#" class="lookFrame" style="position: relative; flex: none; width: 345px; height: 450px; box-sizing: border-box; padding: 12px 12px 52px; background: #F2F2EE; box-shadow: 0 24px 50px rgba(0,0,0,.6); text-decoration: none; display: block; z-index: 1; transform: rotate(-1.5deg)"><span class="ph" style="display: block; width: 100%; height: 100%; background: linear-gradient(160deg, #2A2A2A 0%, #0E0E0E 100%)"><img src="assets/lb2.jpg" alt="Black-and-white portrait in black knit" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center"></span><span style="position: absolute; left: 14px; right: 14px; bottom: 16px; display: flex; align-items: center; justify-content: space-between; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 20px; line-height: 1; text-transform: uppercase; color: #000000">Look 01<span style="font-family: 'Inter Tight', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .1em">FW26</span></span></a>
+        <a href="#" class="lookFrame" style="position: relative; flex: none; width: 250px; height: 330px; box-sizing: border-box; padding: 12px 12px 52px; background: #F2F2EE; box-shadow: 0 24px 50px rgba(0,0,0,.6); text-decoration: none; display: block; margin-left: -18px; transform: rotate(-7deg)"><span class="ph" style="display: block; width: 100%; height: 100%; background: linear-gradient(160deg, #2A2A2A 0%, #0E0E0E 100%)"><img src="assets/lb3.jpg" alt="Model crouching by a graffiti shutter" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center"></span><span style="position: absolute; left: 14px; right: 14px; bottom: 16px; display: flex; align-items: center; justify-content: space-between; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 20px; line-height: 1; text-transform: uppercase; color: #000000">Look 03<span style="font-family: 'Inter Tight', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .1em">FW26</span></span></a>
+      </div>
+      <button aria-label="Next look" style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.04); color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+    </div>
+    <div style="width: 100%; max-width: 1100px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap">
+      <p id="lookText" style="margin: 0; max-width: 420px; font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.75)">Look 01 — padded shell, boxy hoodie and wide cargo. Built for cold nights in the city.</p>
+      <a href="#" style="font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #FFFFFF; text-underline-offset: 5px">Shop the look</a>
+    </div>
+  </div>
+</section>
+
+<!-- MATERIALS -->
+<section style="padding: 88px 50px">
+  <div style="display: flex; flex-direction: column; gap: 48px">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap">
+      <div style="display: flex; flex-direction: column; gap: 12px"><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: .16em; color: var(--accent)"><span style="width: 10px; height: 10px; background: var(--accent)"></span>HOW IT'S MADE</span><h2 style="margin: 0; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 48px; font-weight: 400; line-height: .95; text-transform: uppercase; color: #FFFFFF">Built to Last</h2><p style="margin: 0; max-width: 520px; font-size: 16px; color: #8A8A8A">Heavy fabrics, honest hardware and small-batch making — in every piece.</p></div>
+      <a href="#" style="font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #FFFFFF; text-underline-offset: 5px">Our materials →</a>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; border: 1px solid #222222">
+      <div style="flex: 1 1 180px; display: flex; flex-direction: column; background: #0E0E0E; border-right: 1px solid #222222">
+        <div style="position: relative; aspect-ratio: 1"><span class="ph" style="display: block; position: absolute; inset: 0; background: linear-gradient(145deg, #1D1D1D 0%, #0A0A0A 100%)"><img src="assets/m1.jpg" alt="Close-up of dark woven fabric" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center"></span></div>
+        <div style="padding: 24px 22px 32px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-size: 17px; font-weight: 700">400 GSM Cotton</h3><p style="margin: 0; font-size: 14px; color: #8A8A8A">Heavyweight French terry</p></div>
+      </div>
+      <div style="flex: 1 1 180px; display: flex; flex-direction: column; background: #0E0E0E; border-right: 1px solid #222222">
+        <div style="position: relative; aspect-ratio: 1"><span class="ph" style="display: block; position: absolute; inset: 0; background: linear-gradient(145deg, #1D1D1D 0%, #0A0A0A 100%)"><img src="assets/m2.jpg" alt="Dark mesh fabric" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center"></span></div>
+        <div style="padding: 24px 22px 32px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-size: 17px; font-weight: 700">Brushed Fleece</h3><p style="margin: 0; font-size: 14px; color: #8A8A8A">Soft inside, holds its shape</p></div>
+      </div>
+      <div style="flex: 1 1 180px; display: flex; flex-direction: column; background: #0E0E0E; border-right: 1px solid #222222">
+        <div style="position: relative; aspect-ratio: 1"><span class="ph" style="display: block; position: absolute; inset: 0; background: linear-gradient(145deg, #1D1D1D 0%, #0A0A0A 100%)"><img src="assets/m3.jpg" alt="Black textured fabric folds" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center"></span></div>
+        <div style="padding: 24px 22px 32px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-size: 17px; font-weight: 700">Garment Dyed</h3><p style="margin: 0; font-size: 14px; color: #8A8A8A">Deep black that ages well</p></div>
+      </div>
+      <div style="flex: 1 1 180px; display: flex; flex-direction: column; background: #0E0E0E; border-right: 1px solid #222222">
+        <div style="position: relative; aspect-ratio: 1"><span class="ph" style="display: block; position: absolute; inset: 0; background: linear-gradient(145deg, #1D1D1D 0%, #0A0A0A 100%)"><img src="assets/m4.jpg" alt="Black leather grain" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center"></span></div>
+        <div style="padding: 24px 22px 32px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-size: 17px; font-weight: 700">YKK Hardware</h3><p style="margin: 0; font-size: 14px; color: #8A8A8A">Zips and snaps built to last</p></div>
+      </div>
+      <div style="flex: 1 1 180px; display: flex; flex-direction: column; background: #0E0E0E; border-right: 1px solid #222222">
+        <div style="position: relative; aspect-ratio: 1"><span class="ph" style="display: block; position: absolute; inset: 0; background: linear-gradient(145deg, #1D1D1D 0%, #0A0A0A 100%)"><img src="assets/m5.jpg" alt="Black woven fabric close-up" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center"></span></div>
+        <div style="padding: 24px 22px 32px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-size: 17px; font-weight: 700">Made in Portugal</h3><p style="margin: 0; font-size: 14px; color: #8A8A8A">Small-batch, family-run mills</p></div>
+      </div>
+      <div style="flex: 1 1 180px; display: flex; flex-direction: column; background: #0E0E0E">
+        <div style="aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 110px; line-height: 1; color: var(--accent)">∞</div>
+        <div style="padding: 24px 22px 32px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-size: 17px; font-weight: 700">Free Repairs</h3><p style="margin: 0; font-size: 14px; color: #8A8A8A">For the life of the piece</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE: PRODUCT SLIDER -->
+<section aria-roledescription="carousel" id="feature" aria-label="Featured pieces" style="background: #0B0B0B; border-top: 1px solid #1A1A1A">
+  <div style="position: relative; padding: 0 130px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px; min-height: 600px">
+    <span style="position: absolute; top: 50%; left: 50px; z-index: 2; transform: translateY(-50%)"><button aria-label="Previous piece" style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.04); color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button></span>
+    <span style="position: absolute; top: 50%; right: 50px; z-index: 2; transform: translateY(-50%)"><button aria-label="Next piece" style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.04); color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></span>
+    <div style="flex: 1.1 1 460px; align-self: stretch; display: flex; align-items: center; justify-content: center; padding: 56px 0">
+      <div style="position: relative; width: 420px; aspect-ratio: 4 / 5; box-shadow: 0 40px 80px rgba(0,0,0,.7)"><span class="ph" style="display: block; position: absolute; inset: 0; background: linear-gradient(160deg, #262626 0%, #0C0C0C 100%)"><img id="featImg" src="assets/feat.jpg" alt="Model in an oversized black shirt" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%"></span></div>
+    </div>
+    <div style="flex: 1 1 400px; max-width: 500px; padding: 56px 0; display: flex; flex-direction: column; align-items: flex-start; gap: 16px">
+      <span style="font-size: 12px; font-weight: 600; letter-spacing: .4em; color: rgba(255,255,255,.7)">THE NEW</span>
+      <h2 id="featTitle" style="margin: 0; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 96px; font-weight: 400; line-height: .9; text-transform: uppercase; color: var(--accent)">Oversized Shirt</h2>
+      <span style="font-family: 'Special Gothic Condensed One', sans-serif; font-size: 22px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.85)">FW26 Essentials</span>
+      <p id="featText" style="margin: 6px 0 10px; font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.75)"><strong style="color: #FFFFFF">Oversized Shirt ($148 | Heavy poplin):</strong> a dropped-shoulder shirt in deep black, cut long and loose to layer over a tee or under a coat.</p>
+      <a href="#" style="height: 50px; padding: 0 30px; border-radius: 999px; background: var(--accent); color: #000000; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; display: inline-flex; align-items: center" id="featCta">Shop the Shirt</a>
+      <div style="margin-top: 22px; display: flex; align-items: center; gap: 18px">
+        <span id="featCount" style="font-family: 'Special Gothic Condensed One', sans-serif; font-size: 18px; letter-spacing: .08em">03 <span style="color: rgba(255,255,255,.4)">/ 06</span></span>
+        <span id="featDots" style="display: flex; align-items: center; gap: 8px"><button aria-label="Hoodie" style="width: 10px; height: 10px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.3); cursor: pointer"></button><button aria-label="Cargo" style="width: 10px; height: 10px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.3); cursor: pointer"></button><button aria-label="Utility jacket" aria-current="true" style="width: 34px; height: 10px; padding: 0; border: 0; border-radius: 999px; background: var(--accent); cursor: pointer"></button><button aria-label="Denim" style="width: 10px; height: 10px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.3); cursor: pointer"></button><button aria-label="Tee" style="width: 10px; height: 10px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.3); cursor: pointer"></button><button aria-label="Beanie" style="width: 10px; height: 10px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.3); cursor: pointer"></button></span>
+      </div>
+    </div>
+  </div>
+  <div style="border-top: 1px solid #1A1A1A; padding: 22px 50px; text-align: center; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 22px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent)">Heavyweight · Garment Dyed · Made in Portugal</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="padding: 88px 50px; border-top: 1px solid #1A1A1A">
+  <div style="display: flex; flex-direction: column; gap: 32px">
+    <div style="display: flex; align-items: center; gap: 60px">
+      <div style="flex: 0 0 340px; display: flex; flex-direction: column; gap: 22px">
+        <h2 style="margin: 0; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 56px; font-weight: 400; line-height: .95; text-transform: uppercase; color: #FFFFFF">Worn by<br>the crowd</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.5; color: rgba(255,255,255,.75)">Real people, real fits — from city streets to late nights.</p>
+      </div>
+      <div id="tTrack" class="tTrack" style="flex: 1; min-width: 0; display: flex; gap: 30px">
+        <article data-rv style="flex: none; width: 585px; height: 424px; display: flex; border-radius: 16px; overflow: hidden; background: #111111; border: 1px solid #222222">
+          <div style="position: relative; flex: none; width: 275px"><span class="ph" style="display: block; position: absolute; inset: 0; background: linear-gradient(160deg, #262626 0%, #0E0E0E 100%)"><img src="assets/t1.jpg" alt="Customer in black with round sunglasses" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center"></span></div>
+          <div style="flex: 1; padding: 26px 18px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px">
+            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px">
+              <h3 style="margin: 0; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 36px; font-weight: 400; line-height: 1; text-transform: uppercase">Ava Moreno</h3>
+              <span style="font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: rgba(255,255,255,.7)">Photographer · Brooklyn, NY</span>
+              <span style="margin-top: 4px; background: var(--accent); color: #000000; font-size: 10px; font-weight: 700; letter-spacing: .06em; padding: 4px 16px; border-radius: 999px">HOODIE</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <span role="img" aria-label="5 out of 5 stars" style="display: flex; gap: 3px"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg></span>
+              <p style="margin: 0; font-size: 17px; line-height: 1.5">“The heaviest hoodie I own and it still drapes perfectly. Three months in and the black hasn’t faded.”</p>
+            </div>
+          </div>
+        </article>
+        <article data-rv style="flex: none; width: 585px; height: 424px; display: flex; border-radius: 16px; overflow: hidden; background: #111111; border: 1px solid #222222">
+          <div style="position: relative; flex: none; width: 275px"><span class="ph" style="display: block; position: absolute; inset: 0; background: linear-gradient(160deg, #262626 0%, #0E0E0E 100%)"><img src="assets/t2.jpg" alt="Customer in a long black coat" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center"></span></div>
+          <div style="flex: 1; padding: 26px 18px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px">
+            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px">
+              <h3 style="margin: 0; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 36px; font-weight: 400; line-height: 1; text-transform: uppercase">Leo Park</h3>
+              <span style="font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: rgba(255,255,255,.7)">Designer · Los Angeles, CA</span>
+              <span style="margin-top: 4px; background: var(--accent); color: #000000; font-size: 10px; font-weight: 700; letter-spacing: .06em; padding: 4px 16px; border-radius: 999px">CARGO</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <span role="img" aria-label="5 out of 5 stars" style="display: flex; gap: 3px"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8z"></path></svg></span>
+              <p style="margin: 0; font-size: 17px; line-height: 1.5">“Fits exactly like the size guide says. The cargos are my uniform now.”</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: flex-end; gap: 20px"><button aria-label="Previous testimonial" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.04); color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button><button aria-label="Next testimonial" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.04); color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section style="padding: 96px 50px 110px; border-top: 1px solid #1A1A1A">
+  <div style="display: flex; flex-direction: column; gap: 56px">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap">
+      <div style="display: flex; flex-direction: column; gap: 14px"><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: .16em; color: var(--accent)"><span style="width: 10px; height: 10px; background: var(--accent)"></span>FOLLOW ON SOCIALS</span><h2 style="margin: 0; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 48px; font-weight: 400; line-height: .95; text-transform: uppercase; color: #FFFFFF">@obsidian.studio</h2></div>
+      <a href="#" style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; text-underline-offset: 5px">Follow @obsidian.studio on Instagram<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 9L9 3M4 3h5v5"></path></svg></a>
+    </div>
+    <div style="display: flex; gap: 20px; overflow: hidden">
+      <a href="#" aria-label="Open Instagram post" style="position: relative; flex: none; width: 236px; height: 484px; display: block"><span class="ph" style="display: block; position: absolute; inset: 0; background: linear-gradient(160deg, #222222 0%, #0B0B0B 100%)"><img src="assets/ig1.jpg" alt="Woman in a black top by graffiti" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center"></span></a>
+      <a href="#" aria-label="Open Instagram post" style="position: relative; flex: none; width: 272px; height: 484px; display: block"><span class="ph" style="display: block; position: absolute; inset: 0; background: linear-gradient(160deg, #222222 0%, #0B0B0B 100%)"><img src="assets/ig2.jpg" alt="Woman in a black coat by a brick wall" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center"></span></a>
+      <a href="#" aria-label="Open Instagram post" style="position: relative; flex: none; width: 272px; height: 484px; display: block"><span class="ph" style="display: block; position: absolute; inset: 0; background: linear-gradient(160deg, #222222 0%, #0B0B0B 100%)"><img src="assets/ig3.jpg" alt="Woman in black at night on a bridge" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center"></span></a>
+      <a href="#" aria-label="Open Instagram post" style="position: relative; flex: none; width: 272px; height: 484px; display: block"><span class="ph" style="display: block; position: absolute; inset: 0; background: linear-gradient(160deg, #222222 0%, #0B0B0B 100%)"><img src="assets/ig4.jpg" alt="Black-and-white portrait in a wide hat" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center"></span></a>
+      <a href="#" aria-label="Open Instagram post" style="position: relative; flex: none; width: 272px; height: 484px; display: block"><span class="ph" style="display: block; position: absolute; inset: 0; background: linear-gradient(160deg, #222222 0%, #0B0B0B 100%)"><img src="assets/ig5.jpg" alt="Woman in a black top at golden hour" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center"></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="border-top: 1px solid #1A1A1A; padding: 96px 50px 0">
+  <div style="display: flex; flex-direction: column; gap: 64px">
+    <div style="display: flex; flex-wrap: wrap; gap: 56px; justify-content: space-between">
+      <form style="flex: 1 1 460px; max-width: 560px; display: flex; flex-direction: column; gap: 22px">
+        <h2 style="margin: 0; font-family: 'Special Gothic Condensed One', sans-serif; font-size: 56px; font-weight: 400; line-height: .95; text-transform: uppercase; color: #FFFFFF">Join the list.<br><span style="color: var(--accent)">Get 10% off</span> your first order.</h2>
+        <label for="obEmail" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Email address</label>
+        <div style="display: flex; height: 56px; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; padding: 5px 5px 5px 22px">
+          <input id="obEmail" type="email" placeholder="Your email address" style="flex: 1; min-width: 0; border: 0; background: transparent; outline: none; color: #FFFFFF; font: 400 15px 'Inter Tight', sans-serif">
+          <button type="button" style="padding: 0 26px; border: 0; border-radius: 999px; background: var(--accent); color: #000000; font: 700 13px 'Inter Tight', sans-serif; letter-spacing: .08em; text-transform: uppercase; cursor: pointer">Subscribe</button>
+        </div>
+        <span style="font-size: 12px; color: rgba(255,255,255,.5)">Early access to drops and restocks. No spam.</span>
+      </form>
+      <div style="flex: 1 1 480px; max-width: 620px; display: flex; flex-wrap: wrap; gap: 40px">
+        <nav aria-label="Shop" style="flex: 1 1 140px; display: flex; flex-direction: column; gap: 14px">
+          <span style="font-family: 'Special Gothic Condensed One', sans-serif; font-size: 22px; text-transform: uppercase; color: var(--accent)">Shop</span>
+          <a href="#" style="font-size: 15px; text-decoration: none; color: rgba(255,255,255,.8)">Men</a>
+          <a href="#" style="font-size: 15px; text-decoration: none; color: rgba(255,255,255,.8)">Women</a>
+          <a href="#" style="font-size: 15px; text-decoration: none; color: rgba(255,255,255,.8)">Accessories</a>
+          <a href="#" style="font-size: 15px; text-decoration: none; color: rgba(255,255,255,.8)">Gift Cards</a>
+        </nav>
+        <nav aria-label="Help" style="flex: 1 1 140px; display: flex; flex-direction: column; gap: 14px">
+          <span style="font-family: 'Special Gothic Condensed One', sans-serif; font-size: 22px; text-transform: uppercase; color: var(--accent)">Help</span>
+          <a href="#" style="font-size: 15px; text-decoration: none; color: rgba(255,255,255,.8)">Contact Us</a>
+          <a href="#" style="font-size: 15px; text-decoration: none; color: rgba(255,255,255,.8)">Shipping</a>
+          <a href="#" style="font-size: 15px; text-decoration: none; color: rgba(255,255,255,.8)">Returns &amp; Exchanges</a>
+          <a href="#" style="font-size: 15px; text-decoration: none; color: rgba(255,255,255,.8)">Size Guide</a>
+        </nav>
+        <nav aria-label="Follow" style="flex: 1 1 140px; display: flex; flex-direction: column; gap: 14px">
+          <span style="font-family: 'Special Gothic Condensed One', sans-serif; font-size: 22px; text-transform: uppercase; color: var(--accent)">Follow</span>
+          <a href="#" style="font-size: 15px; text-decoration: none; color: rgba(255,255,255,.8)">Instagram</a>
+          <a href="#" style="font-size: 15px; text-decoration: none; color: rgba(255,255,255,.8)">TikTok</a>
+          <a href="#" style="font-size: 15px; text-decoration: none; color: rgba(255,255,255,.8)">YouTube</a>
+          <a href="#" style="font-size: 15px; text-decoration: none; color: rgba(255,255,255,.8)">Pinterest</a>
+        </nav>
+      </div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding: 26px 0; border-top: 1px solid #1F1F1F; border-bottom: 1px solid #1F1F1F; font-size: 14px; color: rgba(255,255,255,.7)">
+      <span style="display: flex; flex-wrap: wrap; gap: 28px"><span>+1 (555) 010-0199</span><span>hello@obsidian.studio</span><span>214 Mercer St, New York, NY</span></span>
+      <span style="display: flex; gap: 10px; font-size: 12px; font-weight: 600; letter-spacing: .1em; color: rgba(255,255,255,.5)">VISA · MASTERCARD · AMEX · APPLE PAY</span>
+    </div>
+    <div style="font-family: 'Special Gothic Condensed One', sans-serif; font-size: 300px; line-height: .8; letter-spacing: .06em; text-align: center; color: #141414; padding: 20px 0 0; overflow: hidden; white-space: nowrap">OBSIDIAN</div>
+  </div>
+  <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 22px 0 26px; border-top: 1px solid #1F1F1F; font-size: 12px; color: rgba(255,255,255,.6)">
+    <span style="flex: 1 1 0">Heavyweight essentials in black</span>
+    <span style="flex: 1 1 0; text-align: center">©2026 OBSIDIAN. All rights reserved.</span>
+    <a href="#" style="flex: 1 1 0; display: inline-flex; justify-content: flex-end; align-items: center; gap: 8px; text-decoration: none">Back to top<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 20V4M5 11l7-7 7 7"></path></svg></a>
+  </div>
+</footer>
+
+</div>
+<script>
+(function(){
+  var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- countdown (ends 3 days after first visit) ---- */
+  var cd=$('#countdown');
+  if(cd){
+    var boxes=$$('span',cd), end;
+    try{ end=+localStorage.getItem('obsDropEnd'); }catch(e){}
+    if(!end||end<Date.now()){ end=Date.now()+((2*24+2)*3600+59*60+22)*1000; try{localStorage.setItem('obsDropEnd',end)}catch(e){} }
+    var pad=function(n){return (n<10?'0':'')+n};
+    var tick=function(){
+      var t=Math.max(0,Math.floor((end-Date.now())/1000));
+      var v=[Math.floor(t/86400),Math.floor(t%86400/3600),Math.floor(t%3600/60),t%60];
+      boxes.forEach(function(b,i){b.textContent=pad(v[i])});
+    };
+    tick(); setInterval(tick,1000);
+  }
+
+  /* ---- hero slider ---- */
+  var hero=$('#hero');
+  if(hero){
+    var heroSlides=$$('.heroSlide',hero), tabs=$$('.heroTab',hero), ring=$('#heroRing'), fill=ring&&ring.querySelector('.ringFill');
+    var copy=[
+      ['FALL / WINTER 2026','Wear the Night','Heavyweight essentials, cut in black'],
+      ['NEW SILHOUETTES','Built Heavy','400 GSM layers that hold their shape'],
+      ['STREET READY','After Dark','Washed blacks and wide cuts for the city']
+    ];
+    var hi=0, DUR=6000, timer;
+    var startRing=function(){
+      if(!fill||reduce) return;
+      fill.classList.remove('run'); fill.style.transitionDuration='0ms'; fill.style.strokeDashoffset='56.55';
+      void fill.getBoundingClientRect();
+      fill.classList.add('run'); fill.style.transitionDuration=DUR+'ms'; fill.style.strokeDashoffset='0';
+    };
+    var showHero=function(n){
+      hi=(n+heroSlides.length)%heroSlides.length;
+      heroSlides.forEach(function(el,i){el.classList.toggle('is-on',i===hi)});
+      tabs.forEach(function(t,i){
+        var on=i===hi;
+        t.setAttribute('aria-selected',on);
+        t.style.color=on?'#FFFFFF':'rgba(255,255,255,.55)';
+        t.style.fontWeight=on?'700':'500';
+        t.style.display='inline-flex'; t.style.alignItems='center'; t.style.gap='10px';
+        if(on&&ring) t.insertBefore(ring,t.firstChild);
+      });
+      hero.classList.add('heroSwap');
+      setTimeout(function(){
+        $('#heroEyebrow').textContent=copy[hi][0];
+        $('#heroTitle').textContent=copy[hi][1];
+        $('#heroText').textContent=copy[hi][2];
+        hero.classList.remove('heroSwap');
+      },300);
+      startRing(); clearTimeout(timer); if(!reduce) timer=setTimeout(function(){showHero(hi+1)},DUR);
+    };
+    tabs.forEach(function(t,i){t.addEventListener('click',function(){showHero(i)})});
+    var hp=$('[aria-label="Previous slide"]',hero), hn=$('[aria-label="Next slide"]',hero);
+    hp&&hp.addEventListener('click',function(){showHero(hi-1)});
+    hn&&hn.addEventListener('click',function(){showHero(hi+1)});
+    showHero(0);
+  }
+
+  /* ---- lookbook (3 frames rotate through looks) ---- */
+  var frames=$$('.lookFrame');
+  if(frames.length===3){
+    var looks=[
+      ['assets/lb2.jpg','Black-and-white portrait in black knit','Look 01','Look 01 — ribbed black knit and a chain. Simple, sharp, built for nights out.'],
+      ['assets/lb3.jpg','Model crouching by a graffiti shutter','Look 02','Look 02 — boxy crewneck and wide black trousers. Easy layers for the street.'],
+      ['assets/lb1.jpg','Model in black on stone steps','Look 03','Look 03 — fitted black top and lace-up boots. Dark from head to toe.'],
+      ['assets/ig1.jpg','Woman in a black top by graffiti','Look 04','Look 04 — cropped tank under a black leather overshirt.'],
+      ['assets/ig2.jpg','Woman in a black coat by a brick wall','Look 05','Look 05 — long black coat over a knit vest and tights.'],
+      ['assets/ig5.jpg','Woman in a black top at golden hour','Look 06','Look 06 — black crop top and maxi skirt for warm evenings.']
+    ];
+    var li=0, order=[1,0,2]; // frame index -> offset from current (left=+1? keep center = current)
+    var renderLooks=function(){
+      var map=[(li+1)%looks.length, li, (li+2)%looks.length]; // left, center, right
+      frames.forEach(function(f,i){
+        f.classList.add('swap');
+        setTimeout(function(){
+          var L=looks[map[i]], img=f.querySelector('img'), cap=f.querySelector('span[style*="bottom: 16px"]');
+          img.src=L[0]; img.alt=L[1];
+          if(cap&&cap.firstChild) cap.firstChild.nodeValue=L[2];
+          f.classList.remove('swap');
+        },250+i*60);
+      });
+      var lt=$('#lookText'); if(lt){lt.style.opacity=0; setTimeout(function(){lt.textContent=looks[li][3]; lt.style.opacity=1},300);}
+    };
+    var lp=$('[aria-label="Previous look"]'), ln=$('[aria-label="Next look"]');
+    lp&&lp.addEventListener('click',function(){li=(li-1+looks.length)%looks.length; renderLooks()});
+    ln&&ln.addEventListener('click',function(){li=(li+1)%looks.length; renderLooks()});
+    frames.forEach(function(f){f.addEventListener('click',function(e){e.preventDefault()})});
+    renderLooks();
+  }
+
+  /* ---- feature product slider ---- */
+  var feat=$('#feature');
+  if(feat){
+    var items=[
+      ['Boxy Hoodie','assets/np1.jpg','Boxy Hoodie ($128 | 400 GSM):','a heavyweight French terry hoodie with a dropped shoulder and a boxy, cropped body.','Shop the Hoodie'],
+      ['Mock-Neck Knit','assets/np2.jpg','Mock-Neck Knit ($118 | Merino blend):','a fine-gauge black knit with a short mock neck. Smart enough for nights out.','Shop the Knit'],
+      ['Oversized Shirt','assets/feat.jpg','Oversized Shirt ($148 | Heavy poplin):','a dropped-shoulder shirt in deep black, cut long and loose to layer over a tee or under a coat.','Shop the Shirt'],
+      ['Washed Zip Hoodie','assets/np3.jpg','Washed Zip Hoodie ($138 | Garment dyed):','an acid-washed charcoal zip hoodie with contrast seams and a deep hood.','Shop the Hoodie'],
+      ['Hooded Shell','assets/np4.jpg','Hooded Shell Jacket ($248 | Water-resistant):','a full-zip black shell with a structured hood, built to layer over knits.','Shop the Jacket'],
+      ['Shadow Hoodie','assets/p1.jpg','Shadow Hoodie ($128 | Brushed fleece):','an oversized pullover with an extra-deep hood and a soft brushed lining.','Shop the Hoodie']
+    ];
+    var dots=$$('#featDots button'), fi=2;
+    dots.forEach(function(d,i){d.setAttribute('aria-label',items[i][0])});
+    var showFeat=function(n){
+      fi=(n+items.length)%items.length; var it=items[fi];
+      feat.classList.add('swap');
+      setTimeout(function(){
+        var img=$('#featImg'); img.src=it[1]; img.alt=it[0];
+        $('#featTitle').textContent=it[0];
+        $('#featText').innerHTML='<strong style="color:#FFFFFF">'+it[2]+'</strong> '+it[3];
+        $('#featCta').textContent=it[4];
+        $('#featCount').innerHTML=('0'+(fi+1))+' <span style="color: rgba(255,255,255,.4)">/ 0'+items.length+'</span>';
+        feat.classList.remove('swap');
+      },300);
+      dots.forEach(function(d,i){
+        var on=i===fi; d.style.width=on?'34px':'10px'; d.style.borderRadius='999px';
+        d.style.background=on?'var(--accent)':'rgba(255,255,255,.3)';
+        on?d.setAttribute('aria-current','true'):d.removeAttribute('aria-current');
+      });
+    };
+    dots.forEach(function(d,i){d.addEventListener('click',function(){showFeat(i)})});
+    $('[aria-label="Previous piece"]',feat).addEventListener('click',function(){showFeat(fi-1)});
+    $('[aria-label="Next piece"]',feat).addEventListener('click',function(){showFeat(fi+1)});
+    // preload
+    items.forEach(function(it){var im=new Image(); im.src=it[1]});
+  }
+
+  /* ---- testimonials: scrollable track with arrows ---- */
+  var track=$('#tTrack');
+  if(track){
+    var cards=$$('article',track), extra=[
+      ['assets/ig2.jpg','Customer in a long black coat','Nia Brooks','Stylist · Chicago, IL','COAT','“Finally a black that stays black. The cut is generous without looking sloppy.”'],
+      ['assets/ig3.jpg','Customer in black at night','Mika Santos','Student · Austin, TX','HOODIE','“Wore it to every late class this semester. Still looks brand new after a dozen washes.”']
+    ];
+    extra.forEach(function(e){
+      var c=cards[0].cloneNode(true), img=c.querySelector('img');
+      img.src=e[0]; img.alt=e[1];
+      c.querySelector('h3').textContent=e[2];
+      var spans=c.querySelectorAll('h3 ~ span'); if(spans[0]) spans[0].textContent=e[3]; if(spans[1]) spans[1].textContent=e[4];
+      c.querySelector('p').textContent=e[5];
+      track.appendChild(c);
+    });
+    var step=function(){var a=track.querySelector('article');return a?a.getBoundingClientRect().width+30:600};
+    var tp=$('[aria-label="Previous testimonial"]'), tn=$('[aria-label="Next testimonial"]');
+    tp&&tp.addEventListener('click',function(){track.scrollBy({left:-step(),behavior:'smooth'})});
+    tn&&tn.addEventListener('click',function(){track.scrollBy({left:step(),behavior:'smooth'})});
+  }
+
+  /* ---- scroll reveal ---- */
+  var targets=$$('section:not(#hero) h2, [data-rv], section:not(#hero) p, .lookFrame, footer form, footer nav');
+  if('IntersectionObserver' in window && !reduce){
+    targets.forEach(function(t){t.classList.add('rv')});
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(en.isIntersecting){
+          var el=en.target, sib=el.parentNode?$$(':scope > .rv',el.parentNode):[];
+          var idx=Math.max(0,sib.indexOf(el));
+          el.style.transitionDelay=(Math.min(idx,5)*90)+'ms';
+          el.classList.add('in'); io.unobserve(el);
+        }
+      });
+    },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+    targets.forEach(function(t){io.observe(t)});
+  }
+
+
+  /* ---- menu drawer ---- */
+  var mm=document.createElement('div'); mm.className='mMenu'; mm.setAttribute('role','dialog'); mm.setAttribute('aria-modal','true'); mm.setAttribute('aria-label','Menu');
+  mm.innerHTML='<div class="mTop"><span>OBSIDIAN</span><button class="mClose" aria-label="Close menu">&times;</button></div><nav><a href="#">Men</a><a href="#">Women</a><a href="#">Collections</a><a href="#">Lookbook</a><a href="#">Stores</a><a href="#">Contact</a></nav><div class="mFoot">Free shipping on orders over $150 · hello@obsidian.studio</div>';
+  document.body.appendChild(mm);
+  var ob=$('[aria-label="Open menu"]');
+  var closeM=function(){mm.classList.remove('open');document.body.classList.remove('noScroll');ob&&ob.focus()};
+  ob&&ob.addEventListener('click',function(){mm.classList.add('open');document.body.classList.add('noScroll');mm.querySelector('.mClose').focus()});
+  mm.querySelector('.mClose').addEventListener('click',closeM);
+  $$('nav a',mm).forEach(function(a){a.addEventListener('click',closeM)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mm.classList.contains('open'))closeM()});
+
+  /* ---- smooth back to top ---- */
+  $$('a').forEach(function(a){ if(/Back to top/.test(a.textContent)) a.addEventListener('click',function(e){e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'})}); });
+})();
+</script>
+</body>
+</html>
